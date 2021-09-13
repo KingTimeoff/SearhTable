@@ -1,5 +1,5 @@
-QT += quick
-
+QT += qml quick widgets
+QT += quickcontrols2
 CONFIG += c++11
 
 # You can make your code fail to compile if it uses deprecated APIs.
@@ -8,9 +8,12 @@ CONFIG += c++11
 
 SOURCES += \
         main.cpp \
+        src/searchtable.cpp \
         src/searchtablebase.cpp
 
 RESOURCES += qml.qrc
+
+IMAGE_INSTALL_append = "qtquickcontrols"
 
 # Additional import path used to resolve QML modules in Qt Creator's code model
 QML_IMPORT_PATH = $$PWD/qml
@@ -24,4 +27,5 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
 HEADERS += \
+    src/searchtable.h \
     src/searchtablebase.h

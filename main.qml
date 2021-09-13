@@ -10,77 +10,41 @@ ApplicationWindow {
     visible: true
 
     title: qsTr("Hello World")
+
+    SearchTable{
+        id: searchTable
+        width: parent.width
+        height: parent.height
+        x: 0
+        y: 0
+    }
+
     header: ToolBar{
         RowLayout{
             anchors.fill: parent
-            Rectangle{
-                id: rectGridButton
-                Layout.fillHeight: true
-                Layout.minimumWidth: 25
-                border.color: "lightgrey"
-                ToolButton{
-                    id: sizeTable
-                    anchors.fill: parent
-                    text:"t"
-                    onClicked: {
-                        rectGrid.visible = rectGrid.visible  ? false : true
-                    }
-                }
-
-                Rectangle{
-                    id: rectGrid
-                    width: 100
-                    height: 100
-                    x: rectGridButton.x
-                    y: rectGridButton.y + rectGridButton.height - 2
-                    visible: false
-                    border.width: 0.5
-                    border.color: "lightgrey"
-
-                    Grid{
-                        anchors.fill: parent
-                        contentHeight: height
-                        contentWidth: width
-                        interactive: false
-                        model: 30
-                        columnSpacing: 5
-                        rowSpacing: 5
-
-                        Rectangle{
-                            border.color: "grey"
-                            implicitHeight: 10
-                            implicitWidth:  10
-                            MouseArea{
-                                anchors.fill: parent
-
-                            }
-
-                        }
-                    }
-
-                }
-                onFocusChanged: {
-                    rectGrid.visible = false
-                }
+            ToolButton{
+                text: "AppendRow"
+                onClicked: searchTable.model.appendRows(1)
             }
+            ToolButton{
+                text: "AppendColumn"
+                onClicked: searchTable.model.appendColumns(1)
+
+            }
+            ToolButton{
+                text: "RemoveLastRow"
+                onClicked: searchTable.model.removeLastRow()
+
+            }
+
+            ToolButton{
+                text: "RemoveLastColumn"
+                onClicked: searchTable.model.removeLastColumn()
+
+            }
+
+
         }
     }
-    Rectangle{
-        id: focusRect
-        anchors.fill: parent
 
-
-
-        SearchTable{
-            width: parent.width
-            height: parent.height
-        }
-        MouseArea
-        {
-            anchors.fill: parent
-            onClicked: {
-                focusRect.focus = true
-            }
-        }
-    }
 }

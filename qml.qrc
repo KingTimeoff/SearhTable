@@ -3,5 +3,7 @@
         <file>main.qml</file>
         <file>qml/SearchTable/qmldir</file>
         <file>qml/SearchTable/SearchTable.qml</file>
+        <file>qml/SearchTable/TableSettings.qml</file>
+        <file>qml/SearchTable/TableHeader.qml</file>
     </qresource>
 </RCC>
